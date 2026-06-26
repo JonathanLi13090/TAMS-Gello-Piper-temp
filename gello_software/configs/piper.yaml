@@ -1,0 +1,21 @@
+robot:
+  _target_: gello.robots.piper.PiperROSRobot
+  joint_names: [joint1, joint2, joint3, joint4, joint5, joint6, gripper]
+  command_topic: /control/joint_states
+  feedback_topic: /feedback/joint_states
+  tcp_pose_topic: /feedback/tcp_pose
+  wait_for_feedback: true
+  auto_enable: false
+  open_control_gate: true
+agent:
+  _target_: gello.agents.gello_agent.GelloAgent
+  port: /dev/serial/by-id/usb-FTDI_USB__-__Serial_Converter_FTBENRJS-if00-port0
+  dynamixel_config:
+    _target_: gello.agents.gello_agent.DynamixelRobotConfig
+    joint_ids: [1, 2, 3, 4, 5, 6]
+    joint_offsets: [0.039654, -0.095470, -0.012723, 0.094213, -0.067754, 0.017453]
+    joint_signs: [1.0, 1.0, 1.0, 1.0, 1.0, -1.0]
+    gripper_config: [7, 195, 152]
+  start_joints: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0]
+hz: 30
+max_steps: 1000

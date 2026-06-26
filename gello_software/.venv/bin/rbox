@@ -1,0 +1,3 @@
+#!/home/tams/gello_software/.venv_ros/bin/python
+from cmeel.run import cmeel_run
+cmeel_run()
